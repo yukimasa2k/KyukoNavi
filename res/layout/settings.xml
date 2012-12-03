@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+		<PreferenceCategory android:title="動作に必要な設定" >
+    	<ListPreference android:key="campus_conf"
+			android:title="表示する校地"
+			android:entries="@array/entries" android:entryValues="@array/values"
+			android:summary="京田辺/今出川/大学院から選択してください\n標準では京田辺に設定されています"
+			android:defaultValue="2"/>
+		<EditTextPreference android:key="class_conf"
+			android:title="通知するクラス"
+			android:dialogTitle="通知するクラスを,で区切って入力してください"
+			android:defaultValue="基礎物理学,電気回路学(例)"/>
+		</PreferenceCategory>
+</PreferenceScreen>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/top"
+        android:layout_width="fill_parent"
+        android:layout_height="64dp" >
+
+        <TextView
+            android:id="@+id/K_Time"
+            android:layout_width="60dp"
+            android:layout_height="64dp"
+			android:gravity="center"
+            android:text="1"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+
+        <TextView
+            android:id="@+id/K_name"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:text="kamoku_name"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/bottom"
+        android:layout_width="fill_parent"
+        android:layout_height="48dp" >
+
+    <TextView
+        android:id="@+id/Reason"
+        android:layout_width="60dp"
+        android:layout_height="fill_parent"
+        android:gravity="center"
+        android:text="yatara_nagai_riyuu"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/T_name"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:text="teacher_name"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+    </LinearLayout>
+</LinearLayout>

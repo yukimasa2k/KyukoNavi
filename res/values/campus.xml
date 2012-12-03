@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+  <string-array name="entries">
+    <item>京田辺</item>
+    <item>今出川</item>
+    <item>大学院</item>
+</string-array>
+<string-array name="values">
+    <item>2</item>
+    <item>1</item>
+    <item>3</item>
+</string-array>
+</resources>

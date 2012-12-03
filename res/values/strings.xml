@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <string name="app_name">同志社休講ナビ</string>
+    <string name="about_label">同志社休講ナビについて</string>
+    <string name="end_label">終了する</string>
+    <string name="perm_start_label">常駐開始</string>
+    <string name="perm_end_label">常駐停止</string>
+    <string name="config_label">設定</string>
+    <string name="readcsv_label">時間割読込</string>
+    <string name="share_label">共有</string>
+    <string name="add_fav_label">お気に入りに追加</string>
+    <string name="search_syllabus_label">シラバスを検索</string>
+
+</resources>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+  <item android:title="@string/config_label"
+        android:id="@+id/config">
+  </item>
+  <item android:title="@string/readcsv_label"
+        android:id="@+id/readcsv">
+  </item>
+  <item android:title="@string/perm_start_label"
+        android:id="@+id/perm_start">
+  </item>
+  <item android:title="@string/perm_end_label"
+        android:id="@+id/perm_end">
+  </item>
+  <item android:title="@string/about_label"
+        android:id="@+id/about">
+  </item>
+  <item android:title="@string/end_label"
+        android:id="@+id/end">
+  </item>
+</menu>

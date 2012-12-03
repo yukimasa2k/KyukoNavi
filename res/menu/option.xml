@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+  <item android:title="@string/share_label"
+        android:id="@+id/share">
+  </item>
+  <item android:title="@string/add_fav_label"
+        android:id="@+id/add_fav">
+  </item>
+  <item android:title="@string/search_syllabus_label"
+        android:id="@+id/search_syllabus">
+  </item>
+</menu>
