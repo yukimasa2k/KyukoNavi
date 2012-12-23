@@ -10,6 +10,6 @@
     <string name="readcsv_label">時間割読込</string>
     <string name="share_label">共有</string>
     <string name="add_fav_label">お気に入りに追加</string>
-    <string name="search_syllabus_label">シラバスを検索</string>
+    <string name="search_syllabus_label">シラバスを表示</string>
 
 </resources>

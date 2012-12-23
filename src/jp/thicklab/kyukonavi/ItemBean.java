@@ -32,7 +32,7 @@ public class ItemBean {
 		str = str.trim();
 		str = str.replaceAll(" {2,}", " ");
 		str = str.replaceAll("&nbsp;","");
-
+		str = str.substring(0, str.length()-1);
 		return str;
 	}
 	public String K_Time = "";

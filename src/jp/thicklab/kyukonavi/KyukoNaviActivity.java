@@ -58,11 +58,12 @@ public class KyukoNaviActivity extends ListActivity {
 		final Spinner _spinner = (Spinner) findViewById(R.id.spinner1);
 		_spinner.setPrompt("曜日を選択して下さい。");
 		_spinner.setAdapter(_adapter);
+
+		final Handler mHandler = new Handler();
 		_spinner.setOnItemSelectedListener(new OnItemSelectedListener() {
 			public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
 				setProgressBarVisibility(true);
 				setProgressBarIndeterminate(true);
-				final Handler mHandler = new Handler();
 				new Thread(new Runnable() {
 					public void run() {
 						mHandler.post(new Runnable() {
@@ -72,7 +73,6 @@ public class KyukoNaviActivity extends ListActivity {
 						});
 					}
 				}).start();
-
 			}
 
 			public void onNothingSelected(AdapterView<?> arg0) {}
@@ -129,12 +129,10 @@ public class KyukoNaviActivity extends ListActivity {
 	public boolean onOptionsItemSelected(MenuItem item) {
 		super.onOptionsItemSelected(item);
 
-		Intent execIntent = new Intent(KyukoNaviActivity.this,
-				KyukoNaviService.class);
-		PendingIntent service = PendingIntent.getService(
-				KyukoNaviActivity.this, 0, execIntent, 0);
-		AlarmManager am = (AlarmManager) getSystemService(ALARM_SERVICE);
-		NotificationManager nm = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+		Intent execIntent = new Intent(KyukoNaviActivity.this, KyukoNaviService.class);
+		PendingIntent service = PendingIntent.getService(KyukoNaviActivity.this, 0, execIntent, 0);
+		AlarmManager am = (AlarmManager)getSystemService(ALARM_SERVICE);
+		NotificationManager nm = (NotificationManager)getSystemService(NOTIFICATION_SERVICE);
 
 		long first = System.currentTimeMillis() + 6 * 60 * 60 * 1000;
 		long interval = 6 * 60 * 60 * 1000;
@@ -151,41 +149,46 @@ public class KyukoNaviActivity extends ListActivity {
 			break;
 		case R.id.about:
 			// about画面表示
-			new Builder(this).setTitle("同志社休講ナビについて")
-					.setMessage("duetのデータを利用して、\nykmsがつくっています。")
-					.setPositiveButton("OK", null).show();
+			new Builder(this)
+				.setTitle("同志社休講ナビについて")
+				.setMessage("duetのデータを利用して、\nykmsがつくっています。")
+				.setPositiveButton("OK", null).show();
 			break;
 		case R.id.end:
-			System.exit(RESULT_OK);
+			this.finish();
 			break;
 		case R.id.config:
 			startActivity(new Intent(this, SettingsActivity.class));
 			break;
 		case R.id.readcsv:
 			new Builder(this)
-					.setTitle("休講ナビ")
-					.setMessage("時間割ファイルはダウンロード済みですか？")
-					.setPositiveButton("はい",
-							new DialogInterface.OnClickListener() {
-								public void onClick(DialogInterface dialog, int which) {
-									startActivity(new Intent(KyukoNaviActivity.this, CsvImporterActivity.class));
-								}
-							})
-
-					.setNeutralButton("いいえ",
+				.setTitle("休講ナビ")
+				.setMessage("時間割ファイルはダウンロード済みですか？")
+				.setPositiveButton("はい",
 						new DialogInterface.OnClickListener() {
 							public void onClick(DialogInterface dialog, int which) {
-								new Builder(KyukoNaviActivity.this)
-									.setTitle("休講ナビ")
-									.setMessage("duetのトップに移動します。\nログインして時間割ファイルを\nダウンロードして読み込んでください。")
-									.setPositiveButton("OK",
-										new DialogInterface.OnClickListener() {
-											public void onClick(DialogInterface dialog, int which) {
-												startActivity(new Intent(Intent.ACTION_VIEW,Uri.parse("https://duet.doshisha.ac.jp/")));
-											}
-										}).show();
+								startActivity(new Intent(KyukoNaviActivity.this, CsvImporterActivity.class));
 							}
-						}).setNegativeButton("キャンセル", null).create().show();
+						})
+
+				.setNeutralButton("いいえ",
+					new DialogInterface.OnClickListener() {
+						public void onClick(DialogInterface dialog, int which) {
+							new Builder(KyukoNaviActivity.this)
+								.setTitle("休講ナビ")
+								.setMessage("duetのトップに移動します。\nログインして時間割ファイルを\nダウンロードして読み込んでください。")
+								.setPositiveButton("OK",
+									new DialogInterface.OnClickListener() {
+										public void onClick(DialogInterface dialog, int which) {
+											startActivity(new Intent(Intent.ACTION_VIEW,Uri.parse("https://duet.doshisha.ac.jp/")));
+										}
+									})
+								.show();
+						}
+					})
+				.setNegativeButton("キャンセル", null)
+				.create()
+				.show();
 			break;
 		default:
 		}
@@ -201,25 +204,24 @@ public class KyukoNaviActivity extends ListActivity {
 
 		ListAdapter(Context context, List<ItemBean> objects) {
 			super(context, 0, objects);
-			mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+			mInflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		}
 
 		@Override
-		public View getView(final int vposition, View convertView,
-				ViewGroup parent) {
+		public View getView(final int vposition, View convertView, ViewGroup parent) {
 			if (convertView == null) {
 				convertView = mInflater.inflate(R.layout.oneline, null);
 			}
 			final ItemBean item = this.getItem(vposition);
 
 			if (item != null) {
-				K_Time = (TextView) convertView.findViewById(R.id.K_Time);
+				K_Time = (TextView)convertView.findViewById(R.id.K_Time);
 				K_Time.setText(item.getTime());
-				K_name = (TextView) convertView.findViewById(R.id.K_name);
+				K_name = (TextView)convertView.findViewById(R.id.K_name);
 				K_name.setText(item.getK_name());
-				Reason = (TextView) convertView.findViewById(R.id.Reason);
+				Reason = (TextView)convertView.findViewById(R.id.Reason);
 				Reason.setText(item.getReason());
-				T_name = (TextView) convertView.findViewById(R.id.T_name);
+				T_name = (TextView)convertView.findViewById(R.id.T_name);
 				T_name.setText(item.getT_name());
 			}
 			return convertView;
@@ -239,7 +241,8 @@ public class KyukoNaviActivity extends ListActivity {
 	public void onCreateContextMenu(ContextMenu menu, View view, ContextMenuInfo info) {
 		super.onCreateContextMenu(menu, view, info);
 		lista = new ListAdapter(getApplicationContext(), list);
-		AdapterContextMenuInfo adapterInfo = (AdapterContextMenuInfo) info;
+		AdapterContextMenuInfo adapterInfo = (AdapterContextMenuInfo)info;
+
 		menu.setHeaderTitle(lista.getK_name(adapterInfo.position));
 		menu.add(0, R.id.share, 0, R.string.share_label);
 		menu.add(0, R.id.add_fav, 0, R.string.add_fav_label);
@@ -250,10 +253,10 @@ public class KyukoNaviActivity extends ListActivity {
 	public boolean onContextItemSelected(MenuItem item) {
 		super.onContextItemSelected(item);
 		lista = new ListAdapter(getApplicationContext(), list);
-		AdapterContextMenuInfo adapterInfo = (AdapterContextMenuInfo) item.getMenuInfo();
+		AdapterContextMenuInfo adapterInfo = (AdapterContextMenuInfo)item.getMenuInfo();
 		switch (item.getItemId()) {
 		case R.id.share:
-			String intent_text = ((Spinner) findViewById(R.id.spinner1)).getSelectedItem().toString()+ "の"
+			String intent_text = ((Spinner)findViewById(R.id.spinner1)).getSelectedItem().toString()+ "の"
 					+ lista.getK_name(adapterInfo.position) + "(" + lista.getT_name(adapterInfo.position) + ")が休講です。 #doshisha #kyukonavi";
 			try {
 				Intent throwIntent = new Intent().setAction(Intent.ACTION_SEND)
@@ -309,15 +312,16 @@ public class KyukoNaviActivity extends ListActivity {
 				Transformer transformer = TransformerFactory.newInstance().newTransformer();
 				DOMResult result = new DOMResult();
 				transformer.transform(new SAXSource(reader, isrc), result);
-				Document doc = (Document) result.getNode();
+				Document doc = (Document)result.getNode();
 				NodeList childs = doc.getElementsByTagName("td");
 
 				final ItemBean[] data = new ItemBean[childs.getLength() / 4];
-				for (int i = 0; i < (childs.getLength() / 4); i++)
+				for (int i = 0; i < (childs.getLength() / 4); i++) {
 					data[i] = new ItemBean();
+				}
 
 				for (int i = 0; i < childs.getLength(); i++) {
-					Element elem = (Element) childs.item(i);
+					Element elem = (Element)childs.item(i);
 					switch (i % 4) {
 					case 0:
 						data[i / 4].setTime(elem.getTextContent());
@@ -334,8 +338,12 @@ public class KyukoNaviActivity extends ListActivity {
 					default:
 					}
 				}
-				for (int j = 0; j < data.length; j++)
+
+				list.clear();
+				for (int j = 0; j < data.length; j++) {
 					list.add(data[j]);
+				}
+
 				// コンテキストメニュー登録
 				registerForContextMenu(getListView());
 				setListAdapter(new ListAdapter(getApplicationContext(), list));
@@ -352,8 +360,7 @@ public class KyukoNaviActivity extends ListActivity {
 						}
 					}
 					if (!str.equals("")) {
-						new Builder(this).setTitle("休講ナビ").setMessage(str + "が休講です。").setPositiveButton("OK",null).show();
-						//Toast.makeText(this, str+"は休講です。", Toast.LENGTH_LONG).show();
+						new Builder(this).setTitle("休講ナビ").setMessage(str + "は休講です。").setPositiveButton("OK",null).show();
 					}
 				}
 
