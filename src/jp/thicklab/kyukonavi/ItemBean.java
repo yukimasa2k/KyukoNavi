@@ -4,25 +4,25 @@ public class ItemBean {
 	public static String modifytext(String s) {
 		StringBuffer sb = new StringBuffer(s);
 		String str = "";
-		for (int i = 0; i < sb.length(); i++) {
+		for(int i = 0; i < sb.length(); i++) {
 			char c = sb.charAt(i);
-			if (c >= 'ａ' && c <= 'ｚ') {
+			if(c >= 'ａ' && c <= 'ｚ') {
 				sb.setCharAt(i, (char) (c - 'ａ' + 'a'));
-			} else if (c >= 'Ａ' && c <= 'Ｚ') {
+			} else if(c >= 'Ａ' && c <= 'Ｚ') {
 				sb.setCharAt(i, (char) (c - 'Ａ' + 'A'));
-			} else if (c >= '０' && c <= '９') {
+			} else if(c >= '０' && c <= '９') {
 				sb.setCharAt(i, (char) (c - '０' + '0'));
-			} else if (c == '　') {
+			} else if(c == '　') {
 				sb.setCharAt(i, ' ');
-			} else if (c == '．') {
+			} else if(c == '．') {
 				sb.setCharAt(i, '.');
-			} else if (c == '，') {
+			} else if(c == '，') {
 				sb.setCharAt(i, ',');
-			} else if (c == '－') {
+			} else if(c == '－') {
 				sb.setCharAt(i, '-');
-			} else if (c == '（') {
+			} else if(c == '（') {
 				sb.setCharAt(i, '(');
-			} else if (c == '）') {
+			} else if(c == '）') {
 				sb.setCharAt(i, ')');
 			}
 		}
@@ -119,6 +119,4 @@ public class ItemBean {
 	public String getData2(){
 		return txtData2;
 	}
-
 }
-

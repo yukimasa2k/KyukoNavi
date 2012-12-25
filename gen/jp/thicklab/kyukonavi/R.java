@@ -24,29 +24,33 @@ public final class R {
         public static final int icon_large=0x7f020006;
     }
     public static final class id {
-        public static final int K_Time=0x7f070002;
-        public static final int K_name=0x7f070003;
-        public static final int Reason=0x7f070005;
-        public static final int T_name=0x7f070006;
-        public static final int about=0x7f07000c;
-        public static final int add_fav=0x7f07000f;
-        public static final int bottom=0x7f070004;
-        public static final int config=0x7f070008;
-        public static final int end=0x7f07000d;
-        public static final int perm_end=0x7f07000b;
-        public static final int perm_start=0x7f07000a;
-        public static final int readcsv=0x7f070009;
-        public static final int search_syllabus=0x7f070010;
-        public static final int share=0x7f07000e;
-        public static final int spinner1=0x7f070000;
-        public static final int top=0x7f070001;
-        public static final int webview1=0x7f070007;
+        public static final int K_Time=0x7f070005;
+        public static final int K_name=0x7f070006;
+        public static final int ListView1=0x7f070000;
+        public static final int Reason=0x7f070008;
+        public static final int T_name=0x7f070009;
+        public static final int about=0x7f07000f;
+        public static final int add=0x7f070001;
+        public static final int add_fav=0x7f070012;
+        public static final int back=0x7f070002;
+        public static final int bottom=0x7f070007;
+        public static final int config=0x7f07000b;
+        public static final int end=0x7f070010;
+        public static final int perm_end=0x7f07000e;
+        public static final int perm_start=0x7f07000d;
+        public static final int readcsv=0x7f07000c;
+        public static final int search_syllabus=0x7f070013;
+        public static final int share=0x7f070011;
+        public static final int spinner1=0x7f070003;
+        public static final int top=0x7f070004;
+        public static final int webview1=0x7f07000a;
     }
     public static final class layout {
-        public static final int list=0x7f030000;
-        public static final int oneline=0x7f030001;
-        public static final int settings=0x7f030002;
-        public static final int webview=0x7f030003;
+        public static final int csv_import=0x7f030000;
+        public static final int list=0x7f030001;
+        public static final int oneline=0x7f030002;
+        public static final int settings=0x7f030003;
+        public static final int webview=0x7f030004;
     }
     public static final class menu {
         public static final int context=0x7f060000;

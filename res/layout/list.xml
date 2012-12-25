@@ -21,6 +21,6 @@
 	    android:layout_width="match_parent"
 	    android:layout_height="wrap_content"
 	    android:textSize="24sp"
-	    android:text="休講情報がないか、\n取得に失敗しました。"/>
+	    android:text="休講情報がないか、取得に失敗しました。"/>
 
 </LinearLayout>
